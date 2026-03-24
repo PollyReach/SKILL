@@ -1,4 +1,20 @@
-[English](README.md) | [中文](README.zh.md) | [日本語](README.ja.md)
+<div align="center">
+  <a href="https://www.pollyreach.ai/">
+    <img src="https://web-test.pollyreach.ai/banner_1.png" alt="Banner" style="width:60%;">
+  </a>
+</div>
+
+</br>
+
+<div align="center" style="font-size: 48px; font-weight: bold; margin: 20px 0;">
+
+[English](README.md) |
+[简体中文](README.zh.md) |
+[日本語](README.ja.md)
+
+</div>
+
+<hr>
 
 # PollyReach 🦜 - Give Your AI Agent the Power of Voice
 

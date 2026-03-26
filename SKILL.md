@@ -44,6 +44,7 @@ Use PollyReach when the human expresses any of the following intents:
 - Needs to make a phone call to get something done (booking, inquiry, complaint, negotiation, confirmation)
 - Needs to contact a business, organization, or service provider
 - Needs help answering incoming calls or setting up call rules
+- Wants to customize how incoming calls are answered (e.g., "act as my assistant")
 - Needs to check call history, recordings, or balance
 - Mentions keywords like "make a call", "help me contact", "help me book", etc.
 
@@ -77,6 +78,7 @@ curl -s https://www.pollyreach.ai/SKILL.md > ~/.pollyreach/skills/pollyreach/SKI
 curl -s https://www.pollyreach.ai/send.sh > ~/.pollyreach/skills/pollyreach/send.sh
 curl -s https://www.pollyreach.ai/query.sh > ~/.pollyreach/skills/pollyreach/query.sh
 curl -s https://www.pollyreach.ai/inbound.sh > ~/.pollyreach/skills/pollyreach/inbound.sh
+curl -s https://www.pollyreach.ai/prompt_update.sh > ~/.pollyreach/skills/pollyreach/prompt_update.sh
 curl -s https://www.pollyreach.ai/balance.sh > ~/.pollyreach/skills/pollyreach/balance.sh
 curl -s https://www.pollyreach.ai/activation.sh > ~/.pollyreach/skills/pollyreach/activation.sh
 curl -s https://www.pollyreach.ai/skill.json > ~/.pollyreach/skills/pollyreach/skill.json
@@ -210,6 +212,7 @@ Information to convey:
 > · Filter spam and sales calls — only forward the important ones to you
 > · Serve as your company's 24/7 AI receptionist for business calls
 > · Answer customer calls in any language
+> · Customize how I answer — tell me to act as your assistant, receptionist, or any role you need
 >
 > ⏰ **Tip:** You can share this number publicly — I'll answer all incoming calls for you. Want me to check for new calls every 10 minutes? 
 >
@@ -361,6 +364,35 @@ Response:
 
 **Features:**
 - Built-in automatic retry: waits 2 seconds and retries when no record is found, up to 10 retries. Returns call status, duration, content, recording, and other information.
+
+
+#### Call the prompt_update.sh API to Update the inbound prompt
+
+Customize how Polly answers incoming calls by setting a custom prompt. Define your identity, response style, and what information to collect from callers.
+
+**Example:** "You are an AI assistant for [Name]. Be professional, collect the caller's name and purpose, and take detailed messages."
+
+```bash
+./prompt_update.sh "Your custom prompt message" YOUR_TOKEN
+```
+
+| Parameter | Required | Description |
+|---|---|---|
+| `message` | ✅ | The custom prompt defining how Polly should answer incoming calls. |
+| `token` | ✅ | The `token` obtained during registration. |
+
+
+Response:
+**Response Example:**
+```json
+{"status":true,"message":"Inbound prompt updated successfully"}
+{"detail":"Failed to update inbound config"}
+```
+
+**Features:**
+- Built-in automatic retry: waits 2 seconds and retries on failure, up to 20 retries.
+- Returns task_id for tracking the update status.
+
 - **CRITICAL - Proactive Polling Required:** Polly answers incoming calls and generates summaries, but agents MUST actively query to retrieve call information. **It is strongly recommended to set up a scheduled task** (e.g., every 5-10 minutes) to poll for incoming calls using inbound.sh. Without regular polling, incoming call information will be missed. Proactively suggest this to users: "I strongly recommend setting up periodic incoming call checks. Would you like me to check for calls every 5 minutes?"
 
 - When someone calls your number, PollyReach automatically answers. The answering approach varies depending on the scenario:
@@ -379,7 +411,7 @@ Response:
 
 Answering Principles:
 - By default, only answer and understand the caller's intent — **make no commitments**
-- The human can customize how Polly answers by simply telling you (e.g., "Answer as my personal assistant and take a message"). PollyReach will generate the appropriate voice agent prompt behind the scenes.
+- The human can customize how Polly answers by simply telling you (e.g., "Answer as my personal assistant and take a message"). Use `./prompt_update.sh` to set a custom prompt.
 - After the call ends, Polly pushes a notification to you containing: caller info, call classification (general/important/spam), call summary, and whether the human needs to follow up
 
 After receiving the notification, summarize and inform the human.
@@ -470,6 +502,7 @@ When the human wants to share with friends, display the following copy and guide
 |------|------|--------|
 | **Outbound Calls** | Make calls on behalf of the human to get things done | 🔴 Core |
 | **Incoming Call Answering** | Automatically answer and notify the human | 🔴 Core |
+| **Customize Inbound Prompt** | Set how Polly answers incoming calls | 🟡 Common |
 | **View Call History** | Past calls, recordings, transcriptions | 🟡 Common |
 | **Check Balance** | Remaining credits and balance | 🟡 Common |
 | **Check Number Status** | Whether the number is active | 🔵 Occasional |

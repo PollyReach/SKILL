@@ -1,6 +1,8 @@
+
+
 <div align="center">
   <a href="https://www.pollyreach.ai/">
-    <img src="https://web-test.pollyreach.ai/banner_1.png" alt="Banner">
+    <img src="https://web-test.pollyreach.ai/banner_1.png" alt="Banner" style="width:60%;">
   </a>
 </div>
 
@@ -8,13 +10,33 @@
 
 <div align="center" style="font-size: 48px; font-weight: bold; margin: 20px 0;">
 
+
 [English](README.md) |
 [简体中文](README.zh.md) |
 [日本語](README.ja.md)
 
+
 </div>
 
 <hr>
+
+<br>
+
+<div align="center">
+
+<br>
+([*Discord*](https://discord.gg/CpPTdHAN) or [*X*](https://x.com/PollyR89900) or [*Tiktok*](https://www.tiktok.com/@pollyreach) or [*小红书*](https://xhslink.com/m/7BjsU2mQIdQ) or [*YouTube*](https://www.youtube.com/@PollyReachOfficial)) 
+🌟 Star PollyReach on GitHub and be instantly notified of new releases.
+
+
+<hr>
+
+<br>
+
+</div>
+
+
+
 
 
 # PollyReach 🦜 - AIエージェントに音声の力を

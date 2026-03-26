@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.pollyreach.ai/">
-    <img src="https://web-test.pollyreach.ai/banner_1.png" alt="Banner" style="width:60%;">
+    <img src="https://web-test.pollyreach.ai/banner_1.png" alt="Banner">
   </a>
 </div>
 

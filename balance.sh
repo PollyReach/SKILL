@@ -9,7 +9,7 @@ TOKEN="$1"
 MAX_RETRIES=1000
 
 for i in $(seq 1 $MAX_RETRIES); do
-  RESPONSE=$(curl -s -w "\n%{http_code}" -X GET https://agent.pollyreach.ai/api/v1/credits/balance \
+  RESPONSE=$(curl -s -w "\n%{http_code}" -X GET https://api.pollyreach.ai/platform/v1/credits/balance \
     -H "Authorization: Bearer $TOKEN")
 
   HTTP_CODE=$(echo "$RESPONSE" | tail -1)

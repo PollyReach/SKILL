@@ -10,7 +10,7 @@ TOKEN="$2"
 MAX_RETRIES=1000
 
 for i in $(seq 1 $MAX_RETRIES); do
-  RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://agent.pollyreach.ai/api/v1/chat/openclaw/completions \
+  RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://api.pollyreach.ai/platform/v1/chat/openclaw/completions \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $TOKEN" \
     -d "{\"message\": \"$MESSAGE\"}")

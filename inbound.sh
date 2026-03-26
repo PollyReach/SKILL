@@ -16,7 +16,7 @@ fi
 
 for i in $(seq 1 $MAX_RETRIES); do
     RESPONSE=$(curl -s -w "\n%{http_code}" -X GET \
-        "https://agent.pollyreach.ai/api/v1/sms_messages/unread" \
+        "https://api.pollyreach.ai/platform/v1/sms_messages/unread" \
         -H "Authorization: Bearer $TOKEN" )
     
     if [ $? -ne 0 ]; then
